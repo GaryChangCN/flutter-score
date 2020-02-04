@@ -72,7 +72,10 @@ class _MatchPageState extends State<MatchPage> {
   handleClear () {
     setState(() {
       this.matchInfo.history.add(this.matchInfo.current);
-      this.matchInfo.current = [];
+      this.matchInfo.current = this.matchInfo.current.map((item) {
+        item.score = 0;
+        return item;
+      }).toList();
     });
     this.debounceSubmit();
   }
